@@ -1,6 +1,7 @@
 # OpenTimestamps: Scalable, Trust-Minimized, Distributed Timestamping with Bitcoin
 
 OpenTimestamps è un progetto open-source che permette la creazione e la verifica di timestamp di file, utilizzando la blockchain Bitcoin.<br>
+Un timestamp dimostra che un determinato dato esiste da un certo istante temporale in poi, infatti ci si riferisce spesso a una `"proofs-of-existence"`.<br>
 Il concetto principale è quello di utilizzare una blockchain come un registro pubblico e immutabile per convalidare l'istante temporale (timestamp) in cui un determinato file è stato creato o modificato.<br>
 Questo può essere utile in vari contesti, come la prova di esistenza di un documento in un momento specifico o la verifica dell'integrità di dati digitali nel tempo.
 
@@ -21,6 +22,8 @@ I Calendar disponibili sono i seguenti:
 -   Bob : <a href="https://bob.btc.calendar.opentimestamps.org/" target="_blank">https://bob.btc.calendar.opentimestamps.org/</a>
 -   Finney : <a href="https://finney.calendar.eternitywall.com/" target="_blank">https://finney.calendar.eternitywall.com/</a>
 -   Catallaxy : <a href="https://ots.btc.catallaxy.com/" target="_blank">https://ots.btc.catallaxy.com/</a>
+
+Per altri dettagli sul progetto : <a href="https://petertodd.org/2016/opentimestamps-announcement" target="_blank">Click here</a>
 
 ## Come eseguire il Timestamping
 
@@ -109,9 +112,21 @@ Se il timestamp è stato confermato dalla blockchain, compariranno anche le info
 Qui, è possibile verificare l'id della transazione e il numero del blocco, che hanno convalidato il timestamp.
 
 Andando sul Calendar che ha gestito il `Timestamping` e cliccando sull'id della transazione corrispondente, si viene reindirizzati su una pagina web relativa al sito <a href="https://mempool.bullBitcoin.com/" target="_blank">mempool</a><br>
-Nota: per saltare questo passaggio, andare direttamente all'url - https://mempool.bullBitcoin.com/it/tx/ID_TRANSACTION
+Nota: per saltare questo passaggio, andare direttamente all'url - https://mempool.bullBitcoin.com/it/tx/ID_TRANSACTION<br>
+Nota 2: è comunque possibile verificare la transazione sulla blockchain Bitcoin su un qualsiasi explorer.
 
-È comunque possibile verificare la transazione sulla blockchain Bitcoin su un qualsiasi explorer.
+### Come possiamo capire se il timestamp del file ha avuto successo ?
+
+Nelle informazioni precedenti è presente una sequenza di caratteri chiamata `merkle root`.<br>
+Questa stringa è calcolata prendendo in considerazione tutte le transazioni presenti in un blocco e creando un `merkle-tree`.<br>
+Viene eseguita una procedura di `hashing` a cascata, combinando gli `hash` delle singole transazioni e concatenandoli.<br>
+Di seguito il link con una spiegazione più dettagliata : <a href="https://petertodd.org/2016/opentimestamps-announcement#merkle-trees" target="_blank">Click here</a>
+
+Sostanzialmente, se l'`hash` del nostro file non fosse stato preso in considerazione durante questa procedura di `hashing`, allora il `merkle root` finale sarebbe stato completamente diverso.<br>
+Questo è quindi la prova dell'esistenza del file quando il blocco è stato creato e validato sulla blockchain.
+
+Per poter verificare tutto ciò, basta semplicemente ripetere tutte le operazioni presenti nella procedura di `hashing`.<br>
+Il risultato finale sarà esattamente lo stesso valore definito precedentemente nel tempo dal `merkle root`.
 
 ## Utilizzo
 In questo repository sono disponibili dei file di vario formato nella directory `src/`.<br>
