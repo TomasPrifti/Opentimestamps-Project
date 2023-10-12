@@ -308,13 +308,36 @@ Nota 2: è comunque possibile verificare la transazione sulla blockchain Bitcoin
 Nelle informazioni precedenti è presente una sequenza di caratteri chiamata `merkle root`.<br>
 Questa stringa è calcolata prendendo in considerazione tutte le transazioni presenti in un blocco e creando un `merkle-tree`.<br>
 Viene eseguita una procedura di `hashing` a cascata, combinando gli `hash` delle singole transazioni e concatenandoli.<br>
-Di seguito il link con una spiegazione più dettagliata : <a href="https://petertodd.org/2016/opentimestamps-announcement#merkle-trees" target="_blank">Click here</a>
+L'immagine seguente è una rappresentazione grafica della procedura:
+![Merkle tree](images/merkle-tree.png)
+
+Di seguito due link con una spiegazione più dettagliata :
+-  <a href="https://petertodd.org/2016/opentimestamps-announcement#merkle-trees" target="_blank">Click here</a>
+-  <a href="https://developer.bitcoin.org/reference/block_chain.html#merkle-trees" target="_blank">Click here</a>
 
 Sostanzialmente, se l'`hash` del nostro file non fosse stato preso in considerazione durante questa procedura di `hashing`, allora il `merkle root` finale sarebbe stato completamente diverso.<br>
 Questo è quindi la prova dell'esistenza del file quando il blocco è stato creato e validato sulla blockchain.
 
 Per poter verificare tutto ciò, basta semplicemente ripetere tutte le operazioni presenti nella procedura di `hashing`.<br>
 Il risultato finale sarà esattamente lo stesso valore definito precedentemente nel tempo dal `merkle root`.
+
+## Transazioni
+La transazione generata contiene differenti dati. Il formato di base è il seguente:
+![Raw transaction format](images/raw-transaction-format.png)
+
+Considerando come esempio una delle transazioni precedenti : <a href="https://mempool.bullbitcoin.com/it/tx/79104b9fb655aae01363ccf52d559bc1826d706ac424bad3002251f7cc6eeec8" target="_blank">here</a><br>
+È possibile notare le informazioni riportate nell'immagine precedente tra cui gli `input`, gli `output` e i relativi indirizzi.
+
+Gli `input` all'interno di una transazione seguono il seguente formato:
+![Transaction input format](images/input-format.png)
+
+Invece, gli `output` all'interno di una transazione seguono il seguente formato:
+![Transaction output format](images/output-format.png)
+
+Le informazioni riportate sono documentate in modo approfondito al seguente link : <a href="https://developer.bitcoin.org/reference/transactions.html#raw-transaction-format" target="_blank">here</a>
+
+Il blocco, oltre a contenere tutte le transazioni, contiene anche altre informazioni importanti tra cui la `difficulty`, il `nonce` utilizzato, l'`header` e il `merkle root` citato precedentemente.<br>
+Di seguito un esempio di blocco : <a href="https://mempool.bullbitcoin.com/it/block/000000000000000000014d50af7ea61f3aa5ca4bbd070723d5c0b90dbf53afd4?showDetails=true&view=actual#details" target="_blank">here</a>
 
 ## Utilizzo
 In questo repository sono disponibili dei file di vario formato nella directory `src/`.<br>
