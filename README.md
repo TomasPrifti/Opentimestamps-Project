@@ -336,8 +336,9 @@ Invece, gli `output` all'interno di una transazione seguono il seguente formato:
 
 Le informazioni riportate sono documentate in modo approfondito al seguente link : <a href="https://developer.bitcoin.org/reference/transactions.html#raw-transaction-format" target="_blank">here</a>
 
-Il blocco, oltre a contenere tutte le transazioni, contiene anche altre informazioni importanti tra cui la `difficulty`, il `nonce` utilizzato, l'`header` e il `merkle root` citato precedentemente.<br>
+Il blocco, oltre a contenere tutte le transazioni, contiene anche altre informazioni importanti tra cui la `difficulty`, il `nonce` utilizzato, l'`header` e il `merkle root` citato precedentemente.
 Di seguito un esempio di blocco : <a href="https://mempool.bullbitcoin.com/it/block/000000000000000000014d50af7ea61f3aa5ca4bbd070723d5c0b90dbf53afd4?showDetails=true&view=actual#details" target="_blank">here</a>
+![Info-block](images/info-block.png)
 
 ## Utilizzo
 In questo repository sono disponibili dei file di vario formato nella directory `src/`.<br>
